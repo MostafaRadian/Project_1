@@ -1,6 +1,5 @@
 <?php
 $title="Beaging";
-
 //1
 //$connect=mysqli_connect("localhost","root","","Dash_Board2");
 //2 quariy
