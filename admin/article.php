@@ -1,5 +1,5 @@
 <?php
-$title="Start here";
+$title="Beaging";
 
 //1
 //$connect=mysqli_connect("localhost","root","","Dash_Board2");
