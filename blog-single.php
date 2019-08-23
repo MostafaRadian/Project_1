@@ -167,8 +167,8 @@ include_once(admin/article.php);
 
             <p class="opacity-70">News</p>
             <br>
-            <h1 class="display-4 hidden-sm-down">We've just passed 1,000 customers!</h1>
-            <h1 class="hidden-md-up">We've just passed 1,000 customers!</h1>
+            <h1 class="display-4 hidden-sm-down"><?= $title?></h1>
+            <h1 class="hidden-md-up"><?= $title?></h1>
             <br><br>
             <p><span class="opacity-70 mr-8">By</span> <a class="text-white" href="#">Hossein Shams</a></p>
             <p><img class="rounded-circle w-40" src="design/img/avatar/2.jpg" alt="..."></p>
