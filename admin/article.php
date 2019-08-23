@@ -1,5 +1,5 @@
 <?php
-$title="Beaging";
+$title="Start an artical.";
 //1
 //$connect=mysqli_connect("localhost","root","","Dash_Board2");
 //2 quariy
@@ -34,7 +34,7 @@ if(isset($_POST['save']))
     $affect=mysqli_affected_rows($connect);
     // if($affect)
     // {
-    //   echo "save success"; 
+    //   echo "save success";
     // }
 
 }
@@ -47,8 +47,8 @@ if(isset($_POST['save']))
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title> AdminLTE 2 | <?=$title?></title>
-  
+  <title> <?=$title?> </title>
+
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -303,24 +303,24 @@ if(isset($_POST['save']))
 
       <!-- Default box -->
       <div class="box">
-      
+
         <div class="box-body" action="article.php" method="POST">
           <!-- general form elements -->
           <div class="box box-primary">
-            
+
         <form role="form" action="article.php" method="POST" enctype="multipart/form-data">
               <div class="box-body">
                 <div class="form-group">
                   <label for="title">Title</label>
                   <input type="text" name="title" class="form-control" id="title" placeholder="Enter title">
                 </div><br>
-         
+
                 <div class="form-group">
                   <label for="intro">Intro</label>
             <!-- /.box-header -->
                 <textarea class="textarea" name="intro"placeholder="Place your intro here" style="width: 100%; height: 100px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                 </div>
-                  
+
                 </div><br>
 
                 <div class="form-group">
@@ -330,34 +330,34 @@ if(isset($_POST['save']))
             <!-- /.box-header -->
             <div class="box-body pad">
                     <textarea id="article" name="article" rows="10" cols="80">
-                                            
+
                     </textarea>
-          
+
             </div>
 
             <div class="form-group">
                   <label for="photo">Photo Upload</label>
                   <input type="file" class="form-control" name="photo"id="photo">
                 </div>
-              
+
                 <!-- /.box-body -->
                 <div class="box-footer">
                 <input type="submit" name="save" class="btn btn-primary" value="Save">
               </div>
-          </form>   
+          </form>
           </div>
-                 
+
         </div>
-                
-              
-              
-              
+
+
+
+
       </div>
-              
-    </section>      
+
+    </section>
 </div>
     <!-- /.content -->
-  
+
   <!-- /.content-wrapper -->
 
   <footer class="main-footer">
