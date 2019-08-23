@@ -1,6 +1,6 @@
 <?php
 
-//1
+//1 connection
 $connect=mysqli_connect("localhost","root","","Dash_Board2");
 //2 quariy
 
@@ -45,7 +45,7 @@ $myq=mysqli_query($connect,$q);
     <!-- Topbar -->
     <nav class="topbar topbar-inverse topbar-expand-md topbar-sticky">
       <div class="container">
-        
+
         <div class="topbar-left">
           <button class="topbar-toggler">&#9776;</button>
           <a class="topbar-brand" href="index.html">
@@ -210,7 +210,7 @@ $myq=mysqli_query($connect,$q);
 
           <div class="row gap-y">
             <?php foreach($myq as $data):?>
-            
+
             <div class="col-12 col-md-6 col-lg-4">
               <div class="card card-hover-shadow">
                 <a href="blog-single.html"><img class="card-img-top" src="img/<?=$data['photo']?>" alt="Card image cap"></a>

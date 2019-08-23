@@ -1,5 +1,6 @@
 <?php
 $title="Start an artical.";
+error_reporting(0);
 //1
 //$connect=mysqli_connect("localhost","root","","Dash_Board2");
 //2 quariy
@@ -355,7 +356,7 @@ if(isset($_POST['save']))
       </div>
 
     </section>
-</div>
+  </div>
     <!-- /.content -->
 
   <!-- /.content-wrapper -->
