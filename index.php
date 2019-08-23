@@ -217,7 +217,7 @@ $myq=mysqli_query($connect,$q);
                 <div class="card-block">
                   <h4 class="card-title"> <?=$data['title']?> </h4>
                   <p class="card-text"><?=$data['intro']?></p>
-                  <a class="fw-600 fs-12" href="blog-single.html">Read more <i class="fa fa-chevron-right fs-9 pl-8"></i></a>
+                  <a class="fw-600 fs-12" href="blog-single.php">Read more <i class="fa fa-chevron-right fs-9 pl-8"></i></a>
                 </div>
               </div>
             </div>

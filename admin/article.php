@@ -1,5 +1,4 @@
 <?php
-$title="Start an artical.";
 error_reporting(0);
 //1
 //$connect=mysqli_connect("localhost","root","","Dash_Board2");
@@ -30,7 +29,7 @@ if(isset($_POST['save']))
     $date=date_create();
     $timestmp=date_format($date,'Y-m-d H:i:s');
     //3 Query
-    $q="INSERT INTO `articles`(`title`, `intro`, `article`, `created_at`, `photo`) VALUES ('$title','$intro','$article','$timestmp','$imgname')";
+    $q="INSERT INTO `articles`(`title`, `intro`, `article`, `created_at`, `photo`)  VALUES ('$title','$intro','$article','$timestmp','$imgname')";
     $myq=mysqli_query($connect,$q);
     $affect=mysqli_affected_rows($connect);
     // if($affect)
@@ -48,7 +47,7 @@ if(isset($_POST['save']))
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title> <?=$title?> </title>
+  <title> Start an article </title>
 
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -289,7 +288,7 @@ if(isset($_POST['save']))
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        <?=$title?>
+        Start an article
         <small>it all starts here</small>
       </h1>
       <ol class="breadcrumb">
@@ -338,7 +337,7 @@ if(isset($_POST['save']))
 
             <div class="form-group">
                   <label for="photo">Photo Upload</label>
-                  <input type="file" class="form-control" name="photo"id="photo">
+                  <input type="file" class="form-control" name="photo" id="photo">
                 </div>
 
                 <!-- /.box-body -->
@@ -355,11 +354,13 @@ if(isset($_POST['save']))
 
       </div>
 
-    </section>
-  </div>
-    <!-- /.content -->
 
+    <!-- /.content -->
+</section>
   <!-- /.content-wrapper -->
+</div>
+
+
 
   <footer class="main-footer">
     <div class="pull-right hidden-xs">

@@ -1,3 +1,8 @@
+<?php
+error_reporting(0);
+include_once(admin/article.php);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,16 +11,16 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
 
-    <title>TheSaaS - Blog post</title>
+    <title> <?= $title?> </title>
 
     <!-- Styles -->
-    <link href="assets/css/core.min.css" rel="stylesheet">
-    <link href="assets/css/thesaas.min.css" rel="stylesheet">
-    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="design/css/core.min.css" rel="stylesheet">
+    <link href="design/css/thesaas.min.css" rel="stylesheet">
+    <link href="design/css/style.css" rel="stylesheet">
 
     <!-- Favicons -->
-    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-    <link rel="icon" href="assets/img/favicon.png">
+    <link rel="apple-touch-icon" href="design/img/apple-touch-icon.png">
+    <link rel="icon" href="design/img/favicon.png">
   </head>
 
   <body>
@@ -24,12 +29,12 @@
     <!-- Topbar -->
     <nav class="topbar topbar-inverse topbar-expand-md topbar-sticky">
       <div class="container">
-        
+
         <div class="topbar-left">
           <button class="topbar-toggler">&#9776;</button>
           <a class="topbar-brand" href="index.html">
-            <img class="logo-default" src="assets/img/logo.png" alt="logo">
-            <img class="logo-inverse" src="assets/img/logo-light.png" alt="logo">
+            <img class="logo-default" src="design/img/logo.png" alt="logo">
+            <img class="logo-inverse" src="design/img/logo-light.png" alt="logo">
           </a>
         </div>
 
@@ -154,7 +159,7 @@
 
 
     <!-- Header -->
-    <header class="header header-inverse h-fullscreen pb-80" style="background-image: url(assets/img/bg-cup.jpg);" data-overlay="8">
+    <header class="header header-inverse h-fullscreen pb-80" style="background-image: url(design/img/bg-cup.jpg);" data-overlay="8">
       <div class="container text-center">
 
         <div class="row h-full">
@@ -166,7 +171,7 @@
             <h1 class="hidden-md-up">We've just passed 1,000 customers!</h1>
             <br><br>
             <p><span class="opacity-70 mr-8">By</span> <a class="text-white" href="#">Hossein Shams</a></p>
-            <p><img class="rounded-circle w-40" src="assets/img/avatar/2.jpg" alt="..."></p>
+            <p><img class="rounded-circle w-40" src="design/img/avatar/2.jpg" alt="..."></p>
 
           </div>
 
@@ -198,7 +203,7 @@
 
           <div class="row">
             <div class="col-12 col-lg-8 offset-lg-2">
-              
+
               <p class="lead">Dynamically procrastinate professional best practices vis-a-vis next-generation content. Seamlessly extend sustainable networks via plug-and-play niche markets. Progressively communicate customized alignments for client-focused services. Holisticly cultivate professional mindshare with impactful niche markets. Dynamically fabricate market-driven collaboration and idea-sharing with turnkey.</p>
 
               <hr class="w-100">
@@ -207,13 +212,13 @@
 
               <p>Compellingly plagiarize economically sound opportunities and cross-platform e-business. Completely embrace alternative initiatives whereas innovative services. Holisticly e-enable one-to-one internal or "organic" sources via interactive technologies. Energistically leverage other's end-to-end e-tailers with goal-oriented innovation. Objectively evolve focused networks for unique methods.</p>
 
-            </div>            
+            </div>
           </div>
 
 
 
           <br>
-          <p><img src="assets/img/blog-img.jpg" alt="..."></p>
+          <p><img src="design/img/blog-img.jpg" alt="..."></p>
           <br>
 
 
@@ -272,7 +277,7 @@
               <div class="media-list">
 
                 <div class="media">
-                  <img class="rounded-circle w-40" src="assets/img/avatar/1.jpg" alt="...">
+                  <img class="rounded-circle w-40" src="design/img/avatar/1.jpg" alt="...">
 
                   <div class="media-body">
                     <p class="fs-14">
@@ -286,7 +291,7 @@
 
 
                 <div class="media">
-                  <img class="rounded-circle w-40" src="assets/img/avatar/2.jpg" alt="...">
+                  <img class="rounded-circle w-40" src="design/img/avatar/2.jpg" alt="...">
 
                   <div class="media-body">
                     <p class="fs-14">
@@ -300,7 +305,7 @@
 
 
                 <div class="media">
-                  <img class="rounded-circle w-40" src="assets/img/avatar/3.jpg" alt="...">
+                  <img class="rounded-circle w-40" src="design/img/avatar/3.jpg" alt="...">
 
                   <div class="media-body">
                     <p class="fs-14">
@@ -360,7 +365,7 @@
         <div class="row gap-y align-items-center">
           <div class="col-12 col-lg-3">
             <p class="text-center text-lg-left">
-              <a href="index.html"><img src="assets/img/logo.png" alt="logo"></a>
+              <a href="index.html"><img src="design/img/logo.png" alt="logo"></a>
             </p>
           </div>
 
@@ -400,9 +405,9 @@
 
 
     <!-- Scripts -->
-    <script src="assets/js/core.min.js"></script>
-    <script src="assets/js/thesaas.min.js"></script>
-    <script src="assets/js/script.js"></script>
+    <script src="design/js/core.min.js"></script>
+    <script src="design/js/thesaas.min.js"></script>
+    <script src="design/js/script.js"></script>
 
   </body>
 </html>
