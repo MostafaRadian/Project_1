@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(0);
 //1 connection
 $connect=mysqli_connect("localhost","root","","Dash_Board2");
 //2 quariy

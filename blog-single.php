@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 $title;$intro;$article;$photo;
 //1 connection
 $connect=mysqli_connect("localhost","root","","Dash_Board2");

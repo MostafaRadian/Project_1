@@ -1,6 +1,6 @@
 <?php
 $title="adsfsdf";
-// error_reporting(0);
+error_reporting(0);
 //1
 //$connect=mysqli_connect("localhost","root","","Dash_Board2");
 //2 quariy
