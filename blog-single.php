@@ -1,6 +1,19 @@
 <?php
-error_reporting(0);
-include_once(admin/article.php);
+$title;$intro;$article;$photo;
+//1 connection
+$connect=mysqli_connect("localhost","root","","Dash_Board2");
+//2 quariy
+
+$q="SELECT * FROM `articles` where id = $_GET[id] ";
+
+$myq=mysqli_query($connect,$q);
+foreach($myq as $data)
+{
+  $title= $data['title'];
+  $intro= $data['intro'];
+  $article= $data['article'];
+  $photo = $data['photo'];
+}
 
 
 ?>
@@ -12,7 +25,7 @@ include_once(admin/article.php);
     <meta name="description" content="">
     <meta name="keywords" content="">
 
-    <title> <?= $title?> </title>
+    <title> <?=$title?> </title>
 
     <!-- Styles -->
     <link href="design/css/core.min.css" rel="stylesheet">
@@ -168,8 +181,8 @@ include_once(admin/article.php);
 
             <p class="opacity-70">News</p>
             <br>
-            <h1 class="display-4 hidden-sm-down"><?= $title?></h1>
-            <h1 class="hidden-md-up"><?= $title?></h1>
+            <h1 class="display-4 hidden-sm-down"><?=$title?></h1>
+            <h1 class="hidden-md-up"><?=$title?></h1>
             <br><br>
             <p><span class="opacity-70 mr-8">By</span> <a class="text-white" href="#">Hossein Shams</a></p>
             <p><img class="rounded-circle w-40" src="design/img/avatar/2.jpg" alt="..."></p>
@@ -205,46 +218,21 @@ include_once(admin/article.php);
           <div class="row">
             <div class="col-12 col-lg-8 offset-lg-2">
 
-              <p class="lead">Dynamically procrastinate professional best practices vis-a-vis next-generation content. Seamlessly extend sustainable networks via plug-and-play niche markets. Progressively communicate customized alignments for client-focused services. Holisticly cultivate professional mindshare with impactful niche markets. Dynamically fabricate market-driven collaboration and idea-sharing with turnkey.</p>
+              <p class="lead"><font size="4"><?=$intro?></font></p>
 
-              <hr class="w-100">
-
-              <p>Proactively whiteboard covalent functionalities through reliable applications. Professionally integrate 24/365 manufactured products rather than end-to-end collaboration and idea-sharing. Conveniently disintermediate progressive scenarios via inexpensive ROI. Proactively build seamless markets rather than world-class channels. Objectively disseminate multimedia based methodologies whereas robust.</p>
-
-              <p>Compellingly plagiarize economically sound opportunities and cross-platform e-business. Completely embrace alternative initiatives whereas innovative services. Holisticly e-enable one-to-one internal or "organic" sources via interactive technologies. Energistically leverage other's end-to-end e-tailers with goal-oriented innovation. Objectively evolve focused networks for unique methods.</p>
-
+              <hr class="w-50">
             </div>
           </div>
-
-
-
-          <br>
-          <p><img src="design/img/blog-img.jpg" alt="..."></p>
-          <br>
-
-
 
           <div class="row">
             <div class="col-12 col-lg-8 offset-lg-2">
 
-              <p>Assertively empower customized alignments vis-a-vis go forward vortals. Completely monetize inexpensive alignments whereas market positioning services. Uniquely revolutionize multifunctional strategic theme areas with adaptive architectures. Interactively orchestrate next-generation content with proactive applications. Appropriately initiate market-driven results through backend deliverables.</p>
+          <br>
+          <p><img src="img/<?=$photo?>"hight=1500 width=2000 alt="..."></p>
+          <br>
 
-              <ul>
-                <li>Energistically coordinate business relationships</li>
-                <li>Change via resource-leveling innovation</li>
-                <li>Efficiently develop fully researched experiences and integrated</li>
-                <li>Assertively empower customized alignments vis-a-vis go forward vortals</li>
-              </ul>
 
-              <p>Quickly innovate high-quality catalysts for change via resource-leveling innovation. Seamlessly expedite just in time infomediaries vis-a-vis viral manufactured products. Rapidiously network synergistic leadership whereas emerging data. Professionally synergize compelling partnerships vis-a-vis leading-edge e-business. Efficiently develop fully researched experiences and integrated. Phosfluorescently simplify ubiquitous bandwidth without client-centered information. Professionally recaptiualize flexible relationships via performance based synergy. Monotonectally mesh interoperable processes through high-quality e-commerce. Dynamically build team building models without 24/7 internal or "organic" sources. Compellingly incentivize e-business methods of empowerment with.</p>
-
-              <blockquote class="blockquote">
-                <div class="quote-sign"></div>
-                <p>Objectively grow out-of-the-box results with go forward methodologies. Progressively exploit dynamic functionalities without ethical portals. Competently facilitate timely total linkage with.</p>
-                <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-              </blockquote>
-
-              <p>Proactively underwhelm proactive leadership skills whereas plug-and-play paradigms. Credibly whiteboard client-centered intellectual capital after B2B total linkage. Progressively innovate technically sound manufactured products whereas diverse meta-services. Continually orchestrate ubiquitous core competencies rather than market positioning "outside the box" thinking. Dramatically redefine out-of-the-box schemas.</p>
+              <p> <font size="4"><?=$article?></font> </p>
 
               <div class="gap-multiline-items-1 mt-30">
                 <a class="badge badge-pill badge-default" href="#">Record</a>
@@ -259,10 +247,6 @@ include_once(admin/article.php);
 
         </div>
       </div>
-
-
-
-
 
       <!--
       |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
