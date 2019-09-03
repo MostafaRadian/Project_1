@@ -236,13 +236,23 @@ $myq=mysqli_query($connect,$q);
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="design/index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+            <li><a href="../AdminLTE-master/index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
           </ul>
         </li>
-        <li class="header">LABELS</li>
-        <li><a href="profile.php"><i class="fa fa-circle-o text-red"></i> <span>Profile</span></a></li>
-        <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
-        <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
+        <li class="active treeview menu-open">
+          <a href="#">
+            <i class="fa fa-files-o"></i>
+            <span> Articles </span>
+            <span class="pull-right-container">
+
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="article.php"><i class="fa fa-circle-o"></i> Create Article</a></li>
+            <li><a href="article_management.php"><i class="fa fa-circle-o"></i> Article Management</a></li>
+          </ul>
+
+      </li>
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -295,12 +305,12 @@ $myq=mysqli_query($connect,$q);
                         <?php foreach($myq as $data):?>
                         <tr>
 
-                          <td> <a href="../blog-single.php?id=<?=$data['id'];?>"> <?=$data['id']?> </a> </td> //Click on any of them to get to the article page
+                          <td> <a href="../blog-single.php?id=<?=$data['id'];?>"> <?=$data['id']?> </a> </td> <!--Click on any of them to get to the article page-->
                           <td> <a href="../blog-single.php?id=<?=$data['id'];?>"> <?=$data['title']?> </a> </td>
                           <td> <a href="../blog-single.php?id=<?=$data['id'];?>"> <?=$data['intro']?> </a> </td>
                           <td> <a href="../blog-single.php?id=<?=$data['id'];?>"> <?=$data['created_at']?> </a> </td>
                           <td> <a href="../blog-single.php?id=<?=$data['id'];?>"> <img width="70px" height="70px" src="../img/<?=$data['photo']?>"> </a> </td>
-                          <td> <button> <a href=""> Edit </a> </button> <br><br> <button> <a href="delete_Article.php?id=<?=$data['id'];?>" > Delete </a> </button> <br><br></td>
+                          <td> <button> <a href="edit.php?id=<?=$data['id'];?>"> Edit </a> </button> <br><br> <button> <a href="delete_Article.php?id=<?=$data['id'];?>" > Delete </a> </button> <br><br></td>
                         </tr>
 
                       <?php endforeach;?>
