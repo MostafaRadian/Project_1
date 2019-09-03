@@ -1,5 +1,5 @@
 <?php
-$title="adsfsdf";
+
 error_reporting(0);
 //1
 //$connect=mysqli_connect("localhost","root","","Dash_Board2");

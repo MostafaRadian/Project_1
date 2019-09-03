@@ -294,11 +294,12 @@ $myq=mysqli_query($connect,$q);
 
                         <?php foreach($myq as $data):?>
                         <tr>
-                          <td><?=$data['id']?></td>
-                          <td><?=$data['title']?></td>
-                          <td>  <?=$data['intro']?></td>
-                          <td> <?=$data['created_at']?></td>
-                          <td><img width="70px" height="70px" src="../img/<?=$data['photo']?>"></td>
+
+                          <td> <a href="../blog-single.php?id=<?=$data['id'];?>"> <?=$data['id']?> </a> </td> //Click on any of them to get to the article page
+                          <td> <a href="../blog-single.php?id=<?=$data['id'];?>"> <?=$data['title']?> </a> </td>
+                          <td> <a href="../blog-single.php?id=<?=$data['id'];?>"> <?=$data['intro']?> </a> </td>
+                          <td> <a href="../blog-single.php?id=<?=$data['id'];?>"> <?=$data['created_at']?> </a> </td>
+                          <td> <a href="../blog-single.php?id=<?=$data['id'];?>"> <img width="70px" height="70px" src="../img/<?=$data['photo']?>"> </a> </td>
                           <td> <button> <a href=""> Edit </a> </button> <br><br> <button> <a href="delete_Article.php?id=<?=$data['id'];?>" > Delete </a> </button> <br><br></td>
                         </tr>
 
