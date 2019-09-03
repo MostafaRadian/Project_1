@@ -1,55 +1,20 @@
 <?php
-$title="adsfsdf";
-error_reporting(0);
-//1
-//$connect=mysqli_connect("localhost","root","","Dash_Board2");
+//1 connection
+$connect=mysqli_connect("localhost","root","","Dash_Board2");
 //2 quariy
 
-//$q="SELECT * FROM `articles`";
+$q="SELECT * FROM `articles` ";
 
-//$myq=mysqli_query($connect,$q);
-if(isset($_POST['save']))
-{
-  //1
-  $title=$_POST['title'];
-  $intro=$_POST['intro'];
-  $article=$_POST['article'];
-  //2
-  $imgname=$_FILES['photo']['name'];
-  $tmp=$_FILES['photo']['tmp_name'];
-  $type=$_FILES['photo']['type'];
-  $error=$_FILES['photo']['error'];
-  $size=$_FILES['photo']['size'];
-  //3 upload
-  $upload=move_uploaded_file($tmp,"../img/".$imgname);
-  if($upload)
-  {
-    //1 connection
-    $connect=mysqli_connect("localhost","root","","Dash_Board2");
-    //2 timestamp
-    $date=date_create();
-    $timestmp=date_format($date,'Y-m-d H:i:s');
-    //3 Query
-    $q="INSERT INTO `articles`(`title`, `intro`, `article`, `created_at`, `photo`)  VALUES ('$title','$intro','$article','$timestmp','$imgname')";
-    $myq=mysqli_query($connect,$q);
-    $affect=mysqli_affected_rows($connect);
+$myq=mysqli_query($connect,$q);
 
-    // if($affect)
-    // {
-    //   echo "save success";
-    // }
-
-}
-
-
-}
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title> Start an article </title>
+  <title> Article Management </title>
 
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -290,13 +255,12 @@ if(isset($_POST['save']))
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Start an Article
-        <small>it all starts here</small>
+        Artical Management
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Articles</a></li>
-        <li class="active">It all starts here</li>
+        <li class="active">Article Management</li>
       </ol>
     </section>
 
@@ -309,58 +273,71 @@ if(isset($_POST['save']))
         <div class="box-body" action="article.php" method="POST">
           <!-- general form elements -->
           <div class="box box-primary">
+              <div class="row">
+                <div class="col-xs-12">
 
-        <form role="form" action="article.php" method="POST" enctype="multipart/form-data">
-              <div class="box-body">
-                <div class="form-group">
-                  <label for="title">Title</label>
-                  <input type="text" name="title" class="form-control" id="title" placeholder="Enter title">
-                </div><br>
+                  <!-- /.box -->
 
-                <div class="form-group">
-                  <label for="intro">Intro</label>
-            <!-- /.box-header -->
-                <textarea class="textarea" name="intro"placeholder="Place your intro here" style="width: 100%; height: 100px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                    <div class="box-body">
+                      <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                          <th>Id</th>
+                          <th>Title</th>
+                          <th>Intro</th>
+                          <th>Created at</th>
+                          <th>Photo</th>
+                          <th>Manage</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <?php foreach($myq as $data):?>
+                        <tr>
+                          <td><?=$data['id']?></td>
+                          <td><?=$data['title']?></td>
+                          <td>  <?=$data['intro']?></td>
+                          <td> <?=$data['created_at']?></td>
+                          <td><img width="70px" height="70px" src="../img/<?=$data['photo']?>"></td>
+                          <td> <button> <a href=""> Edit </a> </button> <br><br> <button> <a href="delete_Article.php?id=<?=$data['id'];?>" > Delete </a> </button> <br><br></td>
+                        </tr>
+
+                      <?php endforeach;?>
+                       </tbody>
+                       <tfoot>
+                       <tr>
+                         <th>Id</th>
+                         <th>Title</th>
+                         <th>Intro</th>
+                         <th>Created at</th>
+                         <th>Photo</th>
+                         <th>Manage</th>
+                       </tr>
+                       </tfoot>
+
+                      </table>
+                    </div>
+                    <!-- /.box-body -->
+                  </div>
+                  <!-- /.box -->
                 </div>
-
-                </div><br>
-
-                <div class="form-group">
-                  <label for="article">Article</label>
-              <!-- /. tools -->
-                </div>
-            <!-- /.box-header -->
-            <div class="box-body pad">
-                    <textarea id="article" name="article" rows="10" cols="80">
-
-                    </textarea>
-
-            </div>
-
-            <div class="form-group">
-                  <label for="photo">Photo Upload</label>
-                  <input type="file" class="form-control" name="photo" id="photo">
-                </div>
-
-                <!-- /.box-body -->
-                <div class="box-footer">
-                <input type="submit" name="save" class="btn btn-primary" value="Save">
+                <!-- /.col -->
               </div>
-          </form>
+              <!-- /.row -->
+
+
+
+
+
+
           </div>
 
-        </div>
-
-
-
-
-      </div>
-
-
+</div>
+</div>
     <!-- /.content -->
 </section>
   <!-- /.content-wrapper -->
-</div>
+
 
 
 
@@ -596,6 +573,21 @@ if(isset($_POST['save']))
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()
+  })
+</script>
+<script src="design/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="design/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script>
+  $(function () {
+    $('#example1').DataTable()
+    $('#example2').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
   })
 </script>
 </body>
