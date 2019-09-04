@@ -1,55 +1,72 @@
 <?php
-
 error_reporting(0);
-//1
-//$connect=mysqli_connect("localhost","root","","Dash_Board2");
-//2 quariy
+$id= $_GET['id']; $photoname; $tmp; $type; $error; $size;
 
-//$q="SELECT * FROM `articles`";
-
-//$myq=mysqli_query($connect,$q);
-if(isset($_POST['save']))
+if(isset($id))
 {
-  //1
-  $title=$_POST['title'];
-  $intro=$_POST['intro'];
-  $article=$_POST['article'];
-  //2
-  $imgname=$_FILES['photo']['name'];
-  $tmp=$_FILES['photo']['tmp_name'];
-  $type=$_FILES['photo']['type'];
-  $error=$_FILES['photo']['error'];
-  $size=$_FILES['photo']['size'];
-  //3 upload
-  $upload=move_uploaded_file($tmp,"../img/".$imgname);
-  if($upload)
+  //1 connection
+  $connect=mysqli_connect("localhost","root","","Dash_Board2");
+  //2 quariy
+  $q="SELECT * FROM `articles` where id = $id ";
+  $myq=mysqli_query($connect,$q);
+
+  foreach ($myq as $data)
   {
-    //1 connection
-    $connect=mysqli_connect("localhost","root","","Dash_Board2");
-    //2 timestamp
-    $date=date_create();
-    $timestmp=date_format($date,'Y-m-d H:i:s');
-    //3 Query
-    $q="INSERT INTO `articles`(`title`, `intro`, `article`, `created_at`, `photo`)  VALUES ('$title','$intro','$article','$timestmp','$imgname')";
-    $myq=mysqli_query($connect,$q);
-    $affect=mysqli_affected_rows($connect);
-
-    // if($affect)
-    // {
-    //   echo "save success";
-    // }
-
+    $title = $data['title'];
+    $intro = $data['intro'];
+    $article = $data['article'];
+    $photo = $data['photo'];
+    $id = $data['id'];
+  }
 }
+else{
 
+    //1
+    $title=$_POST['title'];
+    $intro=$_POST['intro'];
+    $article=$_POST['article'];
+    $id=$_POST['id'];
 
-}
+    if(isset($_FILES['photo']))
+    {
+
+      $photoname=$_FILES['photo']['name'];
+      $tmp=$_FILES['photo']['tmp_name'];
+      $type=$_FILES['photo']['type'];
+      $error=$_FILES['photo']['error'];
+      $size=$_FILES['photo']['size'];
+      //3 upload
+      $upload=move_uploaded_file($tmp,"../img/".$photoname);
+
+    }
+     //1 connection
+     $connect=mysqli_connect("localhost","root","","Dash_Board2");
+     //2 quariy
+     $q="UPDATE `articles` SET `title`='$title',`intro`='$intro',`article`='$article'";
+
+     if(isset($photoname))
+     {
+       $q .= ", `photo` = '$photoname' ";
+     }
+
+     $q .= " WHERE id = $id ";
+
+     $myq=mysqli_query($connect,$q);
+
+     $affect= mysqli_affected_rows($connect);
+     if($affect)
+     {
+       header("LOCATION:article_management.php");
+     }
+
+   }
 ?>
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title> Start an article </title>
+  <title> Article Edit </title>
 
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -271,13 +288,23 @@ if(isset($_POST['save']))
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="design/index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+            <li><a href="../AdminLTE-master/index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
           </ul>
         </li>
-        <li class="header">LABELS</li>
-        <li><a href="profile.php"><i class="fa fa-circle-o text-red"></i> <span>Profile</span></a></li>
-        <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
-        <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
+        <li class="active treeview menu-open">
+          <a href="#">
+            <i class="fa fa-files-o"></i>
+            <span> Articles </span>
+            <span class="pull-right-container">
+
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="article.php"><i class="fa fa-circle-o"></i> Create Article</a></li>
+            <li><a href="article_management.php"><i class="fa fa-circle-o"></i> Article Management</a></li>
+          </ul>
+
+      </li>
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -290,13 +317,13 @@ if(isset($_POST['save']))
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Start an Article
-        <small>it all starts here</small>
+        Edit Your Article
+
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Articles</a></li>
-        <li class="active">It all starts here</li>
+        <li class="active">Edit Your Article</li>
       </ol>
     </section>
 
@@ -310,17 +337,19 @@ if(isset($_POST['save']))
           <!-- general form elements -->
           <div class="box box-primary">
 
-        <form role="form" action="article.php" method="POST" enctype="multipart/form-data">
+        <form role="form" action="edit.php" method="POST" enctype="multipart/form-data">
               <div class="box-body">
                 <div class="form-group">
                   <label for="title">Title</label>
-                  <input type="text" name="title" class="form-control" id="title" placeholder="Enter title">
+                  <input type="text" name="title" value="<?=$title;?>"class="form-control" id="title" placeholder="Enter title">
                 </div><br>
+
+                  <input type="hidden" name=id value="<?=$id;?>" >
 
                 <div class="form-group">
                   <label for="intro">Intro</label>
             <!-- /.box-header -->
-                <textarea class="textarea" name="intro"placeholder="Place your intro here" style="width: 100%; height: 100px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                <textarea class="textarea" name="intro" placeholder="Place your intro here" style="width: 100%; height: 100px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><?=$intro;?></textarea>
                 </div>
 
                 </div><br>
@@ -331,12 +360,10 @@ if(isset($_POST['save']))
                 </div>
             <!-- /.box-header -->
             <div class="box-body pad">
-                    <textarea id="article" name="article" rows="10" cols="80">
-
-                    </textarea>
+                    <textarea id="article" name="article" rows="10" cols="80"><?=$article;?></textarea>
 
             </div>
-
+            <img src="../img/<?=$photo;?>" width="200px" height="200px">
             <div class="form-group">
                   <label for="photo">Photo Upload</label>
                   <input type="file" class="form-control" name="photo" id="photo">
@@ -344,7 +371,7 @@ if(isset($_POST['save']))
 
                 <!-- /.box-body -->
                 <div class="box-footer">
-                <input type="submit" name="save" class="btn btn-primary" value="Save">
+                <input type="submit" name="update" class="btn btn-primary" value="Update">
               </div>
           </form>
           </div>
