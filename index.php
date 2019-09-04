@@ -1,5 +1,11 @@
 <?php
 error_reporting(0);
+session_start();
+
+if(empty($_SESSION['user']))
+{
+  header("LOCATION:login.php");
+}
 //1 connection
 $connect=mysqli_connect("localhost","root","","Dash_Board2");
 //2 quariy
@@ -212,7 +218,7 @@ $myq=mysqli_query($connect,$q);
             <?php foreach($myq as $data):?>
             <div class="col-12 col-md-6 col-lg-4">
               <div class="card card-hover-shadow">
-                <a href="blog-single.php?id=<?=$data['id']?>"><img class="card-img-top" src="img/<?=$data['photo']?>" hight=350 width=350 alt="Card image cap"></a>
+                <a href="blog-single.php?id=<?=$data['id']?>"><img class="card-img-top" src="img/<?=$data['photo']?>" hight="300px" width="300px" alt="Card image cap"></a>
                 <div class="card-block">
                   <h4 class="card-title"> <?=$data['title']?> </h4>
                   <p class="card-text"><?=$data['intro']?></p>

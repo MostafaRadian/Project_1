@@ -1,5 +1,10 @@
 <?php
+session_start();
 
+if(empty($_SESSION['user']))
+{
+  header("LOCATION:../login.php");
+}
 
 $connect=mysqli_connect("localhost","root","","Dash_Board2");
 //2 quariy

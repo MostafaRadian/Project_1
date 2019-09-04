@@ -1,4 +1,10 @@
 <?php
+session_start();
+
+if(empty($_SESSION['user']))
+{
+  header("LOCATION:../login.php");
+}
 //1 connection
 $connect=mysqli_connect("localhost","root","","Dash_Board2");
 //2 quariy
@@ -236,7 +242,7 @@ $myq=mysqli_query($connect,$q);
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="../AdminLTE-master/index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+            <li><a href="../AdminLTE-master/index2.php"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
           </ul>
         </li>
         <li class="active treeview menu-open">
@@ -250,6 +256,7 @@ $myq=mysqli_query($connect,$q);
           <ul class="treeview-menu">
             <li><a href="article.php"><i class="fa fa-circle-o"></i> Create Article</a></li>
             <li><a href="article_management.php"><i class="fa fa-circle-o"></i> Article Management</a></li>
+            <li><a href="../index.php"><i class="fa fa-circle-o"></i> View Articles</a></li>
           </ul>
 
       </li>

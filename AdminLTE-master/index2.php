@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 <head>
   <meta charset="utf-8">
@@ -31,7 +32,9 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
+
 <body class="hold-transition skin-blue sidebar-mini">
+
 <div class="wrapper">
 
   <header class="main-header">
@@ -59,6 +62,7 @@
               <i class="fa fa-envelope-o"></i>
               <span class="label label-success">4</span>
             </a>
+
             <ul class="dropdown-menu">
               <li class="header">You have 4 messages</li>
               <li>
@@ -352,6 +356,7 @@
           <ul class="treeview-menu">
             <li><a href="../admin/article.php"><i class="fa fa-circle-o"></i> Create Article</a></li>
             <li><a href="../admin/article_management.php"><i class="fa fa-circle-o"></i> Article Management</a></li>
+            <li><a href="../index.php"><i class="fa fa-circle-o"></i> View Articles</a></li>
           </ul>
         </li>
 
@@ -1371,7 +1376,7 @@
             <label class="control-sidebar-subheading">
               Show me as online
               <input type="checkbox" class="pull-right" checked>
-            </label>
+            </label
           </div>
           <!-- /.form-group -->
 
